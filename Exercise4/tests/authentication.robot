@@ -9,18 +9,21 @@ Suite Teardown  Close browser
 
 *** Test Cases ***
 
-Test without email
+Login without email
+    Clear fields
     Fill in login password  somepassword
     ${error}=  Login and get error code
     Should Be Equal  ${error}  Error: Username is required.
 
-Test with unexisting account
-    Fill in login username  someusername
-    Fill in login password  somepassword
+Login with unexisting account
+    Clear fields
+    Fill in login username  dflkdfkldf
+    Fill in login password  sdklfbkjfdnk
     ${error}=  Login and get error code
     Should Be Equal  ${error}  ERROR: Invalid username. Lost your password?
 
-Test without password
-    Fill in login username  someusername
+Login without password
+    Clear fields
+    Fill in login username  dfklfdklfdklvmnb
     ${error}=  Login and get error code
     Should Be Equal  ${error}  Error: Password is required.
